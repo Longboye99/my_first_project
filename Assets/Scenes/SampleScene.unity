@@ -717,6 +717,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerScore: 0
+  ballPrefab: {fileID: 3093655122121044347, guid: 5eec7a260f67bca438278a9549655e5a, type: 3}
 --- !u!4 &1887276148
 Transform:
   m_ObjectHideFlags: 0
