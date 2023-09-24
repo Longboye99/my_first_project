@@ -27,26 +27,28 @@ public class Ball : MonoBehaviour
     private Renderer renderer;
 
     [SerializeField]
-    private Rigidbody rd;
+    private Rigidbody rb;
+
+    [SerializeField]
+    private float forcepower = 5;
 
     // Start is called before the first frame update
     void Awake()
     {
         renderer = GetComponent<Renderer>();
-        rd = GetComponent<Rigidbody>();
+        rb = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     private void OnMouseDown()
     {
         Debug.Log(point);
         GameManager.instance.UpdateScore(point);
-        Destroy(gameObject);
     }
 
     public void SetColorAndPoint(BallColor col)
@@ -96,4 +98,7 @@ public class Ball : MonoBehaviour
                 break;
         }
     }
+
+ 
+
 }
