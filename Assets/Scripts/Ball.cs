@@ -17,13 +17,23 @@ public enum BallColor
 
 public class Ball : MonoBehaviour
 {
-    [SerializeField] private int point;
-    [SerializeField] private BallColor ballColor;
+    [SerializeField] 
+    private int point;
+
+    [SerializeField] 
+    private BallColor ballColor;
+
+    [SerializeField] 
+    private Renderer renderer;
+
+    [SerializeField]
+    private Rigidbody rd;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        
+        renderer = GetComponent<Renderer>();
+        rd = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
@@ -37,5 +47,53 @@ public class Ball : MonoBehaviour
         Debug.Log(point);
         GameManager.instance.UpdateScore(point);
         Destroy(gameObject);
+    }
+
+    public void SetColorAndPoint(BallColor col)
+    {
+        switch (col)
+        {
+            case BallColor.White:
+                point = 0;
+                renderer.material.color = Color.white;
+                break;
+
+            case BallColor.Red:
+                point = 1;
+                renderer.material.color = Color.red;
+                break;
+
+            case BallColor.Yellow:
+                point = 2;
+                renderer.material.color = Color.yellow;
+                break;
+
+            case BallColor.Green:
+                point = 3;
+                renderer.material.color = Color.green;
+                break;
+
+            case BallColor.Brown:
+                point = 4;
+                renderer.material.color = new Color32(99, 57,30,255);
+                break;
+
+            case BallColor.Blue:
+                point = 5;
+                renderer.material.color = Color.blue;
+                break;
+
+            case BallColor.Pink:
+                point = 6;
+                renderer.material.color = new Color32(225,107,187,255);
+                break;
+
+            case BallColor.Black:
+                point = 7;
+                renderer.material.color = Color.black;
+                break;
+            default:
+                break;
+        }
     }
 }

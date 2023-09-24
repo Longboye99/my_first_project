@@ -14,7 +14,11 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         instance = this;
-        Instantiate(ballPrefab, Vector3.zero, Quaternion.identity);
+        SetBall(BallColor.Black);
+        SetBall(BallColor.Pink);
+        SetBall(BallColor.Red);
+
+        
     }
 
     // Update is called once per frame
@@ -23,4 +27,10 @@ public class GameManager : MonoBehaviour
         playerScore += n;
     }
 
+    private void SetBall(BallColor color)
+    {
+        GameObject obj = Instantiate(ballPrefab, Vector3.zero, Quaternion.identity);
+        Ball b = obj.GetComponent<Ball>();
+        b.SetColorAndPoint(color);
+    }
 }
