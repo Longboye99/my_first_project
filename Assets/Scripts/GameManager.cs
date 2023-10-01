@@ -38,13 +38,18 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            shootball();
+            shootBall();
             
         }
 
         rotateBall();
+
+        if (Input.GetKeyDown(KeyCode.Backspace))
+        {
+            stopBall();
+        }
     }
 
     // Update is called once per frame
@@ -60,11 +65,20 @@ public class GameManager : MonoBehaviour
         b.SetColorAndPoint(color);
     }
 
-    private void shootball()
+    private void shootBall()
     {
         Rigidbody rb = cueBall.GetComponent<Rigidbody>();
-        rb.AddForce(new Vector3(), ForceMode.Impulse);
+        rb.AddRelativeForce(Vector3.forward*30, ForceMode.Impulse);
 
+    }
+
+    private void stopBall()
+    {
+        Rigidbody rb = cueBall.GetComponent<Rigidbody>();
+
+        rb.velocity = Vector3.zero;
+        rb.angularVelocity = Vector3.zero;
+        cueBall.transform.eulerAngles = Vector3.forward;
     }
 
     private void rotateBall()

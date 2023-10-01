@@ -17,8 +17,8 @@ public enum BallColor
 
 public class Ball : MonoBehaviour
 {
-    [SerializeField] 
-    private int point;
+    [SerializeField]
+    public int point;
 
     [SerializeField] 
     private BallColor ballColor;
@@ -29,8 +29,6 @@ public class Ball : MonoBehaviour
     [SerializeField]
     private Rigidbody rb;
 
-    [SerializeField]
-    private float forcepower = 5;
 
     // Start is called before the first frame update
     void Awake()
